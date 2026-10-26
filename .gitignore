@@ -1,0 +1,8 @@
+node_modules
+dist
+.wrangler
+.dev.vars
+pipeline/raw
+.claude
+.DS_Store
+PLAN.md

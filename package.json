@@ -1,0 +1,35 @@
+{
+  "name": "geos",
+  "private": true,
+  "description": "3D viewer from orbit to the crust: Fleet Space Centauri satellites, global earthquakes, CRUST1.0 and an ambient-noise model of the Australian crust",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && tsc -p worker && vite build",
+    "preview": "vite preview",
+    "data": "node pipeline/prepare.mjs",
+    "check": "node src/project.check.ts && node src/isosurface.check.ts && node src/sats.check.ts",
+    "deploy": "npm run build && wrangler deploy",
+    "types": "wrangler types worker/worker-configuration.d.ts"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^9.8.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "satellite.js": "^7.1.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "wrangler": "^4.150.0"
+  }
+}

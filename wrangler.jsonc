@@ -1,0 +1,13 @@
+// `npm run deploy` builds to dist/ and deploys the site plus the Worker in worker/index.ts.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "geos",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
+  // No id: the first `wrangler deploy` creates the namespace and writes its id back here.
+  "kv_namespaces": [{ "binding": "ORBITS" }],
+  // CelesTrak checks for new data every ~2 h and allows one download per update; every 4 h stays well inside that.
+  "triggers": { "crons": ["17 */4 * * *"] },
+  "observability": { "enabled": true }
+}
