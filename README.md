@@ -1,5 +1,14 @@
 # geos: from orbit to the crust
 
+**Live: [geos.notnav.workers.dev](https://geos.notnav.workers.dev)**
+
+<p>
+  <img src="docs/globe.png" alt="Globe view: 48,000 earthquakes at their true depth around the Pacific and Indonesia, Fleet's Centauri satellites with orbit lines, and the Australian model's outline" width="49%">
+  <img src="docs/australia.png" alt="Australia in 3D view: depth slice at 40 km and two vertical slices through the shear-wave velocity model, red slower and blue faster than average, with mineral districts labelled" width="49%">
+</p>
+
+*Left: the globe, with earthquakes since 2000 (deeper in darker orange) and Fleet's satellites live. Right: Australia in 3D, slicing the crust to 70 km.*
+
 An interactive 3D viewer with two views. It opens on a **globe** at true scale: Fleet Space's Centauri
 satellites 500–600 km up, 48,000 earthquakes down to 690 km, and the thickness of the crust. From there it
 flies into **Australia in 3D**: a published shear-wave velocity (Vs) model of the Australian crust, imaged
@@ -53,8 +62,9 @@ npx wrangler dev --test-scheduled   # site + Worker locally; GET /__scheduled ru
 npm run deploy     # build + deploy to Cloudflare Workers
 ```
 
-The first `npm run deploy` creates the `ORBITS` KV namespace and writes its id into `wrangler.jsonc`.
-Until the cron first runs, `/api/satellites` serves the bundled snapshot.
+Live at **https://geos.notnav.workers.dev**. Until the cron first runs after a deploy, `/api/satellites` serves the bundled snapshot.
+
+Forking? Delete the `id` from the `ORBITS` binding in `wrangler.jsonc`; your first `npm run deploy` then creates your own KV namespace.
 
 ## How it fits together
 
